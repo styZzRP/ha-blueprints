@@ -198,9 +198,19 @@ action:
         Writing state: {{ {
           "timestamp": now,
           "endpoint_id": button,
-          "event": event_count
+          "event": event_count,
+          "cmd": cmd
         } | to_json }}
       level: warning
+  # Stop automation if cmd == attribute_updated
+  - choose:
+      - conditions: '{{ cmd == "attribute_updated" }}'
+        sequence:
+          - service: system_log.write
+            data:
+              message: 'Stopping automation due to attribute_updated event'
+              level: warning
+          - stop: true  
   # Update state
   - service: input_text.set_value
     target:
