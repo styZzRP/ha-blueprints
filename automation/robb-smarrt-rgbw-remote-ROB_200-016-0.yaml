@@ -224,7 +224,7 @@ action:
           target:
              entity_id: !input light_group_1
           data:
-             color_temp_kelvin: "{{ temp }}"
+             color_temp_kelvin: "{{ (1000000 / temp) | int(0) }}"
       - conditions:
         - '{{ group == 2 }}'
         sequence:
@@ -232,7 +232,7 @@ action:
           target:
              entity_id: !input light_group_2
           data:
-             color_temp_kelvin: "{{ temp }}"
+             color_temp_kelvin: "{{ (1000000 / temp) | int(0) }}"
       - conditions:
         - '{{ group == 3 }}'
         sequence:
@@ -240,7 +240,7 @@ action:
           target:
              entity_id: !input light_group_3
           data:
-             color_temp_kelvin: "{{ temp }}"
+             color_temp_kelvin: "{{ (1000000 / temp) | int(0) }}"
 
   # Update light light level - step up
   - conditions:
