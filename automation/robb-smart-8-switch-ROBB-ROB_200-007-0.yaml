@@ -30,6 +30,8 @@ blueprint:
               model: SR-ZG9001K8-DIM
             - integration: zha
               model: ZG2833K8_EU05
+            - integration: zha
+              model: ED-10015
           multiple: false
     on_button_1_short:
       name: On button 1 - short
